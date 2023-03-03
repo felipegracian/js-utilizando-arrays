@@ -223,26 +223,59 @@ const listagemProdutos = function () {
 
     console.log(listProdutosJSon)
 
-    let qntdadeitens = listProdutosJSon.produto.length;
-    for (let contador = 0; contador < qntdadeitens; contador++) {
-        console.log('\n')
-        console.log('\n')
-        console.log('********************COMEÇANDO*****************************')
-        console.log('\n')
-        console.log('\n')
-        console.log('Nome: ' + listProdutosJSon.produto[contador].nome)
-        console.log('Marca: ' + listProdutosJSon.produto[contador].marca)
-        console.log('Valor: ' + listProdutosJSon.produto[contador].valor)
+    //Se for utilizar o for seria assim
+    // let qntdadeitens = listProdutosJSon.produto.length;
+    // for (let contador = 0; contador < qntdadeitens; contador++) {
+    //     console.log('\n')
+    //     console.log('\n')
+    //     console.log('*************************************************')
+    //     console.log('\n')
+    //     console.log('\n')
+    //     console.log('Nome: ' + listProdutosJSon.produto[contador].nome)
+    //     console.log('Marca: ' + listProdutosJSon.produto[contador].marca)
+    //     console.log('Valor: ' + listProdutosJSon.produto[contador].valor)
 
-        for (let contadorCor = 0; contadorCor < listProdutosJSon.produto[contador].cor.length; contadorCor++) {
-            console.log('Cores: ' + listProdutosJSon.produto[contador].cor[contadorCor])
-        }
+    //     for (let contadorCor = 0; contadorCor < listProdutosJSon.produto[contador].cor.length; contadorCor++) {
+    //         console.log('Cores: ' + listProdutosJSon.produto[contador].cor[contadorCor])
+    //     }
 
-        // console.log(listProdutosJSon.produto[contador].modelos.length)
-        for (let contadorModelo = 0; contadorModelo < listProdutosJSon.produto[contador].modelos.length; contadorModelo++) {
-            console.log('Modelos: ' + listProdutosJSon.produto[contador].modelos[contadorModelo])
+    //     // console.log(listProdutosJSon.produto[contador].modelos.length)
+
+    //     if (listProdutosJSon.produto[contador].modelos == undefined) {
+    //         console.log('Modelo Único')
+    //     } else {
+    //         for (let contadorModelo = 0; contadorModelo < listProdutosJSon.produto[contador].modelos.length; contadorModelo++) {
+    //             console.log('Modelos: ' + listProdutosJSon.produto[contador].modelos[contadorModelo])
+    //         }
+    //     }
+
+
+    // }
+
+    //fazendo essa função com o forEach seria assim
+    listProdutosJSon.produto.forEach(function (itemProduto) {
+        console.log('Nome: ' + itemProduto.nome)
+        console.log('Marca: ' + itemProduto.marca)
+        console.log('Valor: ' + itemProduto.valor)
+        //verifica se o produto possui o atributo cor
+        if(itemProduto.cor == undefined){
+            console.log('Cor Única')
+        } else{
+            //percorre o array de cores e mostra no console
+            itemProduto.cor.forEach(function(itemCor){
+                console.log('********* Cores disponíeis : ' + itemCor)
+            })
         }
-    }
+        if(itemProduto.modelos == undefined){
+            console.log('Modelo Único')
+        } else{
+            itemProduto.modelos.forEach(function(itemModelo){
+                console.log('********* Modelos disponíeis : ' + itemModelo)
+            })
+        }
+        
+    })
+    
 
 }
 
